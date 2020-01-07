@@ -1,0 +1,19 @@
+name: Action!
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  run:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Does this work?
+      run: echo $PUBLIC_URL
+      env:
+        PUBLIC_URL: "{{ PUBLIC_URL }}"
