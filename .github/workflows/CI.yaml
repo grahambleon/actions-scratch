@@ -21,6 +21,9 @@ jobs:
         login-server: quay.io
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-
+    - name: flyway
+      run:  wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/6.2.1/flyway-commandline-6.2.1-linux-x64.tar.gz | tar xvz && sudo ln -s `pwd`/flyway-6.2.1/flyway /usr/local/bin 
+    - name: flyway check
+      run: flyway info
     - name: Does this work?
       run: docker run -d --name tax-pg -e POSTGRES_PASSWORD=vision7 -p 5432:5432 -d quay.io/vgsi/tax-postgres:master
