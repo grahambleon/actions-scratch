@@ -16,5 +16,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
+    - name: login to quay
+      run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
     - name: Does this work?
       run: docker run -d quay.io/vgsi/tax-postgres:master
