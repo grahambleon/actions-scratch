@@ -21,4 +21,4 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Does this work?
-      run: docker run -d quay.io/vgsi/tax-postgres:master
+      run: docker run quay.io/vgsi/tax-postgres:master
