@@ -9,7 +9,9 @@ jobs:
   run:
 
     runs-on: ubuntu-latest
-
+    env:
+      GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+      GITHUB_PASSWORD: ${{ secrets.GITHUB_PASSWORD }}
     steps:
     - uses: actions/checkout@v1
 
@@ -21,4 +23,4 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Does this work?
-      run: docker run quay.io/vgsi/tax-postgres:master
+      run: docker run -d --name tax-pg -e POSTGRES_PASSWORD=vision7 -p 5432:5432 -d quay.io/vgsi/tax-postgres:master
